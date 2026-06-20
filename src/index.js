@@ -1,10 +1,11 @@
 import dotenv from "dotenv";
 import connectDB from "../db/connectDB.js";
-import { app } from "./app.js";
+// import { app } from "./app.js";
 
 dotenv.config({
   path: "./.env",
 });
+const { app } = await import("./app.js");
 connectDB()
   .then(() => {
     app.listen(process.env.PORT || 8000, () => {
@@ -15,8 +16,6 @@ connectDB()
     console.log("MONGO db connection failed !!!", err);
   });
 
-
-  
 // import express from "express";
 // const app = express();
 // (async () => {
